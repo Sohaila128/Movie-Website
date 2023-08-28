@@ -1,0 +1,120 @@
+/* Global styles */
+html {
+  background-color: black;
+}
+
+html::-webkit-scrollbar {
+  width: 0.5rem;
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #ffc107;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.App {
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffc107' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;
+}
+
+/* Cards styles */
+.cards {
+  transition: transform 0.2s;
+  margin: 0.19rem;
+  cursor: pointer;
+  min-width: 200px;
+  height: 300px;
+  z-index: 0;
+  border: 1px solid rgb(99, 99, 99);
+}
+
+@media screen and (min-width: 1200px) {
+  .cards:hover {
+    transform: scale(1.2);
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+}
+
+.cards__img {
+  height: 300px;
+}
+
+.cards__overlay {
+  padding: 0 1rem 1rem 1rem;
+  bottom: 0;
+  height: 290px;
+  justify-content: flex-end;
+  background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.cards__overlay:hover {
+  opacity: 1;
+}
+
+.card__title {
+  font-weight: 900;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.card__runtime {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.card__rating {
+  float: right;
+}
+
+.card__description {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Movie List styles */
+.movie__list {
+  padding: 0 3rem 3rem 3rem;
+}
+
+.list__title {
+  font-size: 1.75rem;
+  margin: 2.5rem;
+}
+
+.movie__Button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 150px;
+  font-weight: bold;
+}
+
+@media (max-width: 560px) {
+  .movie__detail {
+    margin-top: 70% !important;
+  }
+  
+  .movie__name {
+    font-size: 2rem;
+  }
+  
+  .movie__genres {
+    margin: 1rem 0;
+  }
+  
+  .movie__links {
+    display: none;
+  }
+}
