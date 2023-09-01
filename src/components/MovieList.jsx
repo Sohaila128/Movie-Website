@@ -43,7 +43,7 @@ const MovieList = ({ movies, searchQuery }) => {
   };
 
   return (
-    <div className="movie__list">
+    <div className="movie__list py-5">
       <h2 className="list__title">
         {(type ? type : "POPULAR").toUpperCase()}
       </h2>

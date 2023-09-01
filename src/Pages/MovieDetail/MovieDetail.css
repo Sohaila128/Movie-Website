@@ -3,8 +3,9 @@
 }
 
 .movie__backdrop {
-  height: 500px;
+  height: 500px !important;
   object-position: 0 35%;
+  margin-top: 65px;
 }
 
 .movie__detail {
@@ -72,9 +73,6 @@
 
 
 @media (max-width: 850px) {
-  /* .movie__detail{
-    margin-top: 70% !important;
-  } */
   .movie__name{
   font-size: 2rem;
   }
@@ -83,20 +81,10 @@
   }
   .movie__links{
     display: none;
+  }
+  .movie__poster{
+    margin-top: 20px;
   }
 }
 
-@media (max-width: 360px) {
-  .movie__detail{
-    margin-top: 70% !important;
-  }
-  .movie__name{
-  font-size: 2rem;
-  }
-  .movie__genres {
-    margin: 1rem 0;
-  }
-  .movie__links{
-    display: none;
-  }
-}
+

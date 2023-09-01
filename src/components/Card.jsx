@@ -17,9 +17,9 @@ const Card = ({ movie }) => {
   return (
     <>
       {isLoading ? ( // Display skeleton loader while loading
-        <div className="cards">
-          <SkeletonTheme color="#202020" highlightColor="#444">
-            <Skeleton height={300} duration={2} />
+        <div className="cards rounded-3">
+        <SkeletonTheme color="#999" highlightColor="#999"> 
+            <Skeleton className="w-100 py-5" height={300} duration={3} />
           </SkeletonTheme>
         </div>
       ) : (

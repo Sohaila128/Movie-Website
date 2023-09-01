@@ -114,3 +114,6 @@ const Home = ({ searchQuery, setSearchQuery }) => {
 };
 
 export default Home;
+
+
+

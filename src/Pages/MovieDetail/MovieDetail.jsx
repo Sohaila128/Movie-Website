@@ -105,7 +105,7 @@ const MovieDetail = () => {
             <div>
               {currentMovieDetail ? currentMovieDetail.overview : ""}
             </div>
-            <div className="fs-4 d-block d-sm-flex align-content-center flex-wrap mt-3">
+            <div className="fs-4 d-block d-sm-flex align-content-center flex-wrap mt-3 Useful">
               Useful Links :
               {/* Display useful links if available */}
               {currentMovieDetail && currentMovieDetail.homepage && (

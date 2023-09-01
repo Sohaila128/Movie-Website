@@ -1,28 +1,25 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  Link, useLocation } from "react-router-dom";
 import Card from "../../components/Card";
-import { Link} from "react-router-dom";
 
 const SearchPage = ({setSearchQuery}) => {
   const [searchResults, setSearchResults] = useState([]);
   const location = useLocation();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const searchQuery = queryParams.get("query");
-    
-    if (searchQuery) {
-  fetchSearchResults(searchQuery);
-  }
-  }, [location.search]);
+useEffect(() => {
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get("query");
   
-    // Function to handle card click
-    const handleLinkClick = () => {
-      setSearchQuery(""); // Clear the search input when a card is clicked
-    };
+  if (searchQuery) {
+fetchSearchResults(searchQuery);
+}
+}, [location.search]);
+
+  // Function to handle card click
+  const handleLinkClick = () => {
+    setSearchQuery(""); // Clear the search input when a card is clicked
+  };
 
   const fetchSearchResults = (searchQuery) => {
     axios
@@ -31,7 +28,6 @@ const SearchPage = ({setSearchQuery}) => {
       )
       .then((response) => {
         setSearchResults(response.data.results);
-        navigate(`/search?query=${searchQuery}`); 
       })
       .catch((error) => {
         console.error("Error fetching search results:", error);
@@ -39,23 +35,24 @@ const SearchPage = ({setSearchQuery}) => {
   };
 
   return (
-    <div className="movie__list">
-      <h2 className="list__title">Search Results</h2>
-      <div className="list__cards d-flex flex-wrap justify-content-center">
+    <div className="movie__list mt-5 py-3">
+      <h2 className="list__title fs-4 d-flex justify-content-center ">Search Results</h2>
+<div className="list__cards d-flex flex-wrap justify-content-center">
         {searchResults.map((movie) => (
-          
-          <Link onClick={handleLinkClick}>
+
+
+    <Link onClick={handleLinkClick}>
             <Card movie={movie} />
-            </Link>
-        ))}
-      </div>
+    </Link>
+
+          
+  ))}
+</div>
+
     </div>
   );
 };
 
 export default SearchPage;
-
-
-
 
 

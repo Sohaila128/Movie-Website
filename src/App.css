@@ -101,9 +101,11 @@ html::-webkit-scrollbar-track {
   font-weight: bold;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 765px) {
   .movie__detail {
-    margin-top: 70% !important;
+    margin-top: 50% !important;
+    display: flex;
+    flex-direction: column;
   }
   
   .movie__name {
@@ -113,8 +115,23 @@ html::-webkit-scrollbar-track {
   .movie__genres {
     margin: 1rem 0;
   }
+  .Useful span{
+    margin-right: 20px;
+    padding: 10px;
+  }
   
-  .movie__links {
+}
+@media (max-width: 414px) { 
+  .movie__detail{
+    margin-top: 70% !important;
+  }
+  .movie__name{
+  font-size: 2rem;
+  }
+  .movie__genres {
+    margin: 1rem 0;
+  }
+  .movie__links{
     display: none;
   }
 }

@@ -1,5 +1,6 @@
 .posterImage{
-  height: 600px;
+  height: 600px !important;
+  margin-top: 50px;
 }
 .posterImage__overlay {
   padding: 5rem !important;
