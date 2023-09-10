@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {  Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Card from "../../components/Card";
+import debounce from 'lodash/debounce';
 
-const SearchPage = ({setSearchQuery}) => {
+const SearchPage = ({ setSearchQuery }) => {
   const [searchResults, setSearchResults] = useState([]);
   const location = useLocation();
 
-useEffect(() => {
-  const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get("query");
-  
-  if (searchQuery) {
-fetchSearchResults(searchQuery);
-}
-}, [location.search]);
+  // Create a debounced function for fetching search results
+  const debouncedFetchSearchResults = debounce((searchQuery) => {
+    fetchSearchResults(searchQuery);
+  }, 500); 
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const searchQuery = queryParams.get("query");
+
+    if (searchQuery) {
+      debouncedFetchSearchResults(searchQuery);
+    }
+  }, [location.search]);
 
   // Function to handle card click
   const handleLinkClick = () => {
@@ -37,22 +43,15 @@ fetchSearchResults(searchQuery);
   return (
     <div className="movie__list mt-5 py-3">
       <h2 className="list__title fs-4 d-flex justify-content-center ">Search Results</h2>
-<div className="list__cards d-flex flex-wrap justify-content-center">
+      <div className="list__cards d-flex flex-wrap justify-content-center">
         {searchResults.map((movie) => (
-
-
-    <Link onClick={handleLinkClick}>
+          <Link key={movie.id} onClick={handleLinkClick} to={`/movie/${movie.id}`}>
             <Card movie={movie} />
-    </Link>
-
-          
-  ))}
-</div>
-
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default SearchPage;
-
-

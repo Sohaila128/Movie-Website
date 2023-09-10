@@ -34,7 +34,7 @@ function App() {
               />
             }
           />
-          <Route path="/*" element={<h1>Error Page</h1>}></Route>
+          <Route path="*" element={<h1>Error Page</h1>}></Route>
         </Routes>
       </div>
     </>
