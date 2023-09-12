@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import Card from "../../components/Card";
@@ -9,9 +9,12 @@ const SearchPage = ({ setSearchQuery }) => {
   const location = useLocation();
 
   // Create a debounced function for fetching search results
-  const debouncedFetchSearchResults = debounce((searchQuery) => {
-    fetchSearchResults(searchQuery);
-  }, 500); 
+  const debouncedFetchSearchResults = useCallback(
+    debounce((searchQuery) => {
+      fetchSearchResults(searchQuery);
+    }, 500),
+    []
+  );
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -20,7 +23,7 @@ const SearchPage = ({ setSearchQuery }) => {
     if (searchQuery) {
       debouncedFetchSearchResults(searchQuery);
     }
-  }, [location.search]);
+  }, [location.search, debouncedFetchSearchResults]);
 
   // Function to handle card click
   const handleLinkClick = () => {
